@@ -1,0 +1,26 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGO_URI=mongodb://mongo:27017/vaitoversedb
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:6.0
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: example
+      MONGO_INITDB_DATABASE: vaitoversedb
+    volumes:
+      - mongo-data:/data/db
+      - ./data/mongo/001_users.js:/docker-entrypoint-initdb.d/001_users.js:ro
+
+volumes:
+  mongo-data:
