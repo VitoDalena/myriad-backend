@@ -41,7 +41,7 @@ app.post('/add-subscription', async (req, res) => {
   try {
     const event = await Event.findOneAndUpdate(
       { identifier },
-      { $addToSet: { subscribers: { email, name, phone } } },  // Evita duplicati
+      { $addToSet: { subscribers: { email, nome: name, telefono: phone } } },  // Evita duplicati
       { new: true, upsert: true }        // Crea se non esiste
     );
     res.status(200).send(event);
