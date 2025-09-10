@@ -31,7 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 // API 1: Aggiungi un'email a una lista
-app.post('/add-subscription', async (req, res) => {
+app.post('/api/add-subscription', async (req, res) => {
   const { identifier, email, name, phone } = req.body;
 
   if (!identifier || !email) {
@@ -51,7 +51,7 @@ app.post('/add-subscription', async (req, res) => {
 });
 
 // API 2: Leggi un documento tramite identifier
-app.get('/get-event/:identifier', async (req, res) => {
+app.get('/api/get-event/:identifier', async (req, res) => {
   const { identifier } = req.params;
   console.log("????",identifier);
   

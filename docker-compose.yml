@@ -6,7 +6,7 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - MONGO_URI=mongodb://mongo:27017/vaitoversedb
+      - MONGO_URI=mongodb://admin:password@mongo:27017/vaitoversedb
     depends_on:
       - mongo
 
@@ -21,6 +21,13 @@ services:
     volumes:
       - mongo-data:/data/db
       - ./data/mongo/001_users.js:/docker-entrypoint-initdb.d/001_users.js:ro
+
+  frontend:
+    image: vaitoverse-portal
+    ports:
+      - "8080:80"
+    depends_on:
+      - api
 
 volumes:
   mongo-data:
