@@ -52,13 +52,10 @@ app.post('/api/add-subscription', async (req, res) => {
 
 // API 2: Leggi un documento tramite identifier
 app.get('/api/get-event/:identifier', async (req, res) => {
-  const { identifier } = req.params;
-  console.log("????",identifier);
-  
+  const { identifier } = req.params;  
 
   try {
     const event = await Event.findOne({ identifier });
-    console.log("????",event);
     if (!event) {
       return res.status(404).send({ error: 'Evento non trovato' });
     }
