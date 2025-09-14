@@ -16,3 +16,4 @@ db.events.updateOne({identifier: '2'}, { $pull: { subscribers: { nome: 'Vito2'}}
 * docker build . -t myriad-backend:1.0.0
 * docker save myriad-backend:1.0.0 -o myriad_backend_image_1.0.0.tar.gz
 * scp myriad_backend_image_1.0.0.tar.gz vdalena@vps-46a26e64.vps.ovh.net:/home/vdalena/
+* docker load -i myriad_backend_image_1.0.0.tar.gz
